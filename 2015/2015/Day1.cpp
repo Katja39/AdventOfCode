@@ -3,6 +3,8 @@
 #include <string>
 
 void NotQuiteLisp() {
+	std::cout << "Part 1, Final Floor:";
+
 	std::ifstream input("file.txt");
 
 	if (!input)
@@ -24,5 +26,24 @@ void NotQuiteLisp() {
 			 floor--;
 		 }
 	}
-	std::cout <<"\nFloor:" << floor<<"\n";
+
+	std::cout <<"\nFloor:" << floor<<"\n\n";
+
+	std::cout << "Part Two, First enter the basement\n";
+	
+	floor = 0;
+
+	for (int i = 0; i < line.size(); i++)
+	{
+		if (line[i] == '(') {
+			floor++;
+		}
+		else if (line[i] == ')') {
+			floor--;
+			if (floor <= -1) {
+				std::cout << "In Basement after " << i + 1 << " rounds\n";
+				break;
+			}
+		}
+	}
 }

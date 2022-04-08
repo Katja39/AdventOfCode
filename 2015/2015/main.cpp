@@ -8,9 +8,11 @@ void main() {
 	std::cout << "Advent of Code 2015\n";
 
 	do {
+	std::cout << "\n--------------------";
 	std::cout << "\nChoose the day\n";
 	std::cout << "Press 0 to quit\n";
 	std::cin >> number;
+	std::cout << "--------------------\n";
 
 	switch (number)
 	{
