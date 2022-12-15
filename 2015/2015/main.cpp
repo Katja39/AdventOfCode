@@ -1,4 +1,5 @@
 #include "Day1.h"
+#include "Day2.h"
 #include <iostream>
 
 void main() {
@@ -23,7 +24,8 @@ void main() {
 	case 1:
 		NotQuiteLisp();
 		break;
+	case 2:
+		IWasToldThereWouldBeNoMath();
 	}
-
 	} while (exit==false);
 }
