@@ -1,6 +1,7 @@
 #include "Day1.h"
 #include "Day2.h"
 #include "Day3.h"
+#include "Day5.h"
 #include <iostream>
 
 void main() {
@@ -29,6 +30,8 @@ void main() {
 		IWasToldThereWouldBeNoMath();
 	case 3:
 		PerfectlySphericalHousesInAVacuum();
+	case 5:
+		DoesntHeHaveInternElvesForThis();
 	}
 	} while (exit==false);
 }
