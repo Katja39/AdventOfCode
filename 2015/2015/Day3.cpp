@@ -11,7 +11,7 @@ void PerfectlySphericalHousesInAVacuum()
 
 	std::cout << "Part 1: Santa\n";
 
-	std::ifstream input("fileDay3.txt");
+	std::ifstream input("files/fileDay3.txt");
 
 	if (!input)
 	{

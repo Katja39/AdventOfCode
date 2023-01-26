@@ -20,7 +20,7 @@ void IWasToldThereWouldBeNoMath() {
 
 	//number of lines in file
 
-	std::ifstream inFile("fileDay2.txt");
+	std::ifstream inFile("files/fileDay2.txt");
 	int counter = std::count(std::istreambuf_iterator<char>(inFile), std::istreambuf_iterator<char>(), '\n');
 
 	int length = 0;

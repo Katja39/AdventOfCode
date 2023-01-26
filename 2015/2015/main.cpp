@@ -2,6 +2,7 @@
 #include "Day2.h"
 #include "Day3.h"
 #include "Day5.h"
+#include "Day6.h"
 #include <iostream>
 
 void main() {
@@ -22,16 +23,21 @@ void main() {
 	case 0:
 		exit = true;
 		break;
-
 	case 1:
 		NotQuiteLisp();
 		break;
 	case 2:
 		IWasToldThereWouldBeNoMath();
+		break;
 	case 3:
 		PerfectlySphericalHousesInAVacuum();
+		break;
 	case 5:
 		DoesntHeHaveInternElvesForThis();
+		break;
+	case 6:
+		ProbablyAFireHazard();
+		break;
 	}
 	} while (exit==false);
 }
