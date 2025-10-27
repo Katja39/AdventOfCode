@@ -48,7 +48,8 @@
 *.sln
 
 #Java IntelliJ
-*/.idea/
 *.class
 *.exe
 *.vsidx
+/2015/2015/out
+/2015/2015/.idea
