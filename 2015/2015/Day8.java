@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Day8 {
     public static void main(String[] args) {
-        System.out.println("=== Day 8: Matchsticks ===");
+        System.out.println("=== Day 8: Matchsticks - Java ===");
 
         List<String> lines = readInputFile("files/fileDay8.txt");
 

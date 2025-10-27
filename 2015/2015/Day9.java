@@ -25,7 +25,7 @@ public class Day9 {
     //Part Two: Longest distance
 
     public static void main(String[] args) {
-        System.out.println("=== Day 9: All in a Single Night ===");
+        System.out.println("=== Day 9: All in a Single Night - Java ===");
 
         List<String> lines = readInputFile("files/fileDay9.txt");
         List<Edge> edges = new ArrayList<>();

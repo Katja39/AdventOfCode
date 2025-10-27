@@ -129,7 +129,7 @@ int main() {
         std::cout << "\n--------------------";
         std::cout << "\nChoose the day\n";
         for (size_t i = 0; i < menu.size(); ++i) {
-            std::cout << (i + 1) << ". " << menu[i].displayName << "\n";
+            std::cout << (i + 1) << ". " << menu[i].displayName << " - " << menu[i].language << "\n";
         }
         std::cout << "0. Quit\n";
         std::cout << "--------------------\n";
