@@ -1,6 +1,8 @@
+# Format: filename;functionName;language;command
 Day1.h;NotQuiteLisp;cpp
 Day2.h;IWasToldThereWouldBeNoMath;cpp
 Day3.h;PerfectlySphericalHousesInAVacuum;cpp
 Day5.h;DoesntHeHaveInternElvesForThis;cpp
 Day6.h;ProbablyAFireHazard;cpp
 Day7.h;SomeAssemblyRequired;cpp
+Day8.java;Matchsticks;java;

@@ -50,14 +50,14 @@ public:
             }
             };
 
-        /*
+        
         // Java
         executors["java"] = [](const MenuEntry& entry) {
             std::string className = entry.filename.substr(0, entry.filename.find(".java"));
             std::string command = "java " + className;
             std::system(command.c_str());
             };
-        */
+        
 
         executors["custom"] = [](const MenuEntry& entry) {
             std::system(entry.command.c_str());

@@ -46,3 +46,9 @@
 *.log
 *.idb
 *.sln
+
+#Java IntelliJ
+*/.idea/
+*.class
+*.exe
+*.vsidx
