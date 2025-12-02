@@ -12,7 +12,7 @@ void DoesntHeHaveInternElvesForThis()
 	It contains at least one letter that appears twice in a row, like xx, abcdde(dd), or aabbccdd(aa, bb, cc, or dd).
 	It does not contain the strings ab, cd, pq, or xy, even if they are part of one of the other requirements.*/
 
-	std::ifstream input("files/fileDay5.txt");
+	std::ifstream input("./files/fileDay5.txt");
 
 	std::string line;
 	int counter = 0;

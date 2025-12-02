@@ -5,18 +5,16 @@
 
 void PerfectlySphericalHousesInAVacuum() 
 {
-	///////////////////////////////////
-	//Part One: Santa Presents////////
-	//////////////////////////////////
+	//Part One: Santa Presents
 
 	std::cout << "Part 1: Santa\n";
 
-	std::ifstream input("files/fileDay3.txt");
+	std::ifstream input("./files/fileDay3.txt");
 
 	if (!input)
 	{
 		std::cerr << "Problem opening the file " << "\n";
-	}
+
 
 	std::string line;
 	std::getline(input, line);
@@ -203,5 +201,6 @@ void PerfectlySphericalHousesInAVacuum()
 	}
 
 	std::cout << "\nNumber of houses with more than one present (santa and robo santa): " << numberOfHousesWithOnePresent << "\n";
+}
 }
 

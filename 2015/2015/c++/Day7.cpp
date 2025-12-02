@@ -115,7 +115,7 @@ std::uint16_t logic::find_output(const std::string & wire) {
  //x AND y -> z = x and y are connected to an AND gate and the output goes to z
     void SomeAssemblyRequired()
     {
-        std::ifstream input("files/fileDay7.txt");
+        std::ifstream input("../files/fileDay7.txt");
 
         std::string command;
         logic circuit;

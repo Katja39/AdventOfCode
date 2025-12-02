@@ -5,7 +5,7 @@
 void NotQuiteLisp() {
 	std::cout << "Part 1, Final Floor:";
 
-	std::ifstream input("files/fileDay1.txt");
+	std::ifstream input("./files/fileDay1.txt");
 
 	if (!input)
 	{

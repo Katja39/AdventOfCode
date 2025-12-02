@@ -44,7 +44,7 @@ void ProbablyAFireHazard()
 
 	std::cout << "Part 1\n";
 
-	std::ifstream input("files/fileDay6.txt");
+	std::ifstream input("../files/fileDay6.txt");
 
 	if (!input)
 	{

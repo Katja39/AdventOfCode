@@ -27,7 +27,7 @@ public class Day9 {
     public static void main(String[] args) {
         System.out.println("=== Day 9: All in a Single Night - Java ===");
 
-        List<String> lines = readInputFile("files/fileDay9.txt");
+        List<String> lines = readInputFile("./files/fileDay9.txt");
         List<Edge> edges = new ArrayList<>();
 
         // Put data in edges

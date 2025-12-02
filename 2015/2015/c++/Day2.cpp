@@ -7,7 +7,7 @@ void IWasToldThereWouldBeNoMath() {
 
 	std::cout << "Part 1, Sum of square feet:";
 
-	std::ifstream input("fileDay2.txt");
+	std::ifstream input("./files/fileDay2.txt");
 
 	if (!input)
 	{
