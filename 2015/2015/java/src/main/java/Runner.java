@@ -6,8 +6,28 @@ public class Runner {
         }
 
         switch (args[0]) {
+            case "Day8":
+                Day8.main(new String[0]);
+                break;
+
+            case "Day9":
+                Day9.main(new String[0]);
+                break;
+
+            case "Day10":
+                Day10.main(new String[0]);
+                break;
+
+            case "Day11":
+                Day11.main(new String[0]);
+                break;
+
             case "Day12":
                 Day12.main(new String[0]);
+                break;
+
+            case "Day13":
+                Day13.main(new String[0]);
                 break;
 
             default:
