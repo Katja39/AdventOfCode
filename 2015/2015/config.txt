@@ -9,4 +9,4 @@ Day8.java;Matchsticks;java
 Day9.java;AllInASingleNight;java
 Day10.java;ElvesLookElvesSay;java
 Day11.java;CorporatePolicy;java
-Day12.java;JSAbacusFramework.io;java
+Day12.java;JSAbacusFramework;java

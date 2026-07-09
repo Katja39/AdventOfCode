@@ -7,6 +7,7 @@
 #include <functional>
 #include <filesystem>
 #include <iomanip>
+#include <cctype>
 
 namespace fs = std::filesystem;
 
@@ -46,36 +47,6 @@ private:
         return "";
     }
 
-    void compileJavaIfNeeded(const std::string& className, const std::string& javaDir) {
-        std::string javaFile = javaDir + "/" + className + ".java";
-        std::string classFile = javaDir + "/" + className + ".class";
-
-        // Check if .java file exists
-        if (!fs::exists(javaFile)) {
-            std::cerr << "Java file not found: " << javaFile << std::endl;
-            return;
-        }
-
-        // Check if .class file exists and is up to date
-        bool needsCompile = true;
-        if (fs::exists(classFile)) {
-            auto javaTime = fs::last_write_time(javaFile);
-            auto classTime = fs::last_write_time(classFile);
-            if (javaTime <= classTime) {
-                needsCompile = false;
-            }
-        }
-
-        if (needsCompile) {
-            std::cout << "Compiling " << className << ".java..." << std::endl;
-            std::string compileCmd = "javac \"" + javaFile + "\"";
-            int result = std::system(compileCmd.c_str());
-            if (result != 0) {
-                std::cerr << "Compilation failed!" << std::endl;
-            }
-        }
-    }
-
 public:
     LanguageExecutor() {
         // C++ Functions
@@ -110,30 +81,36 @@ public:
             };
 
         // Java Executor
-        executors["java"] = [this](const MenuEntry& entry) {
+        executors["java"] = [](const MenuEntry& entry) {
             std::string className = entry.filename;
+
             // Remove .java extension if present
             size_t dotPos = className.find(".java");
             if (dotPos != std::string::npos) {
                 className = className.substr(0, dotPos);
             }
 
-            std::cout << "Executing Java class: " << className << std::endl;
+            std::cout << "Executing Java class via Maven JAR: " << className << std::endl;
 
-            // Look for Java file in java directory
-            std::string javaDir = "java";
-            if (!fs::exists(javaDir)) {
-                std::cerr << "Error: java directory not found!" << std::endl;
+            std::string jarPath = "java/target/advent-java.jar";
+
+            if (!fs::exists(jarPath)) {
+                std::cerr << "Error: Java JAR not found: " << jarPath << std::endl;
+                std::cerr << "Build it first with:" << std::endl;
+                std::cerr << "  cd java" << std::endl;
+                std::cerr << "  .\\mvnw.cmd package" << std::endl;
                 return;
             }
 
-            // Compile if needed
-            compileJavaIfNeeded(className, javaDir);
+            std::string command = "java -jar \"" + jarPath + "\" " + className;
 
-            // Execute Java program
-            std::string command = "java -cp \"" + javaDir + "\" " + className;
             std::cout << "Running: " << command << std::endl;
-            std::system(command.c_str());
+
+            int result = std::system(command.c_str());
+
+            if (result != 0) {
+                std::cerr << "Java execution failed!" << std::endl;
+            }
             };
 
         // Custom Executor
@@ -162,10 +139,36 @@ public:
     void addCppFunction(const std::string& name, std::function<void()> func) {
         cppFunctions[name] = func;
     }
+
 };
+
+int extractDayNumber(const std::string& filename) {
+    std::string prefix = "Day";
+
+    size_t pos = filename.find(prefix);
+    if (pos == std::string::npos) {
+        return -1;
+    }
+
+    pos += prefix.length();
+
+    std::string numberText;
+    while (pos < filename.length() && std::isdigit(static_cast<unsigned char>(filename[pos]))) {
+        numberText += filename[pos];
+        pos++;
+    }
+
+    if (numberText.empty()) {
+        return -1;
+    }
+
+    return std::stoi(numberText);
+}
+
 
 int main() {
     std::vector<MenuEntry> menu;
+    std::map<int, MenuEntry> menuByDay;
     std::ifstream config("config.txt");
 
     if (!config.is_open()) {
@@ -210,6 +213,12 @@ int main() {
             // Format: Day1 - NotQuiteLisp - cpp
             entry.displayName = dayName + " - " + entry.functionName + " - " + entry.language;
             menu.push_back(entry);
+
+            int dayNumber = extractDayNumber(entry.filename);
+
+            if (dayNumber != -1) {
+                menuByDay[dayNumber] = entry;
+            }
         }
     }
 
@@ -221,8 +230,11 @@ int main() {
     while (!exit) {
         std::cout << "\n========================================\n";
 
-        for (size_t i = 0; i < menu.size(); ++i) {
-            std::cout << std::setw(3) << (i + 1) << ". " << menu[i].displayName << "\n";
+        for (const auto& pair : menuByDay) {
+            int day = pair.first;
+            const MenuEntry& entry = pair.second;
+
+            std::cout << std::setw(3) << day << ". " << entry.displayName << "\n";
         }
 
         std::cout << "\n" << std::setw(3) << "0" << ". Quit\n";
@@ -236,9 +248,16 @@ int main() {
             exit = true;
             std::cout << "\nGoodbye!\n";
         }
-        else if (number > 0 && number <= static_cast<int>(menu.size())) {
-            const MenuEntry& entry = menu[number - 1];
-            executor.execute(entry);
+        else if (number > 0) {
+            auto it = menuByDay.find(number);
+
+            if (it != menuByDay.end()) {
+                const MenuEntry& entry = it->second;
+                executor.execute(entry);
+            }
+            else {
+                std::cout << "No entry found for Day " << number << ". Please try another day.\n\n";
+            }
         }
         else {
             std::cout << "Invalid selection. Please try again.\n\n";

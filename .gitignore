@@ -1,57 +1,74 @@
-# Prerequisites
+# C++
 *.d
-
-# Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
-
-# Precompiled Headers
+*.lo
+*.slo
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
 *.lib
+*.lai
+*.la
 
-# Executables
 *.exe
 *.out
 *.app
+
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.log
+
+
+# Visual Studio
+.vs/
 *.suo
+*.user
 *.filters
 *.db
 *.opendb
 *.ipch
-*.tlog
-*.pdb
-*.vcxproj
-*.user
 *.db-shm
 *.db-wal
 *.recipe
-*.ilk
-*.log
-*.idb
-*.sln
-
-#Java IntelliJ
-*.class
-*.exe
 *.vsidx
-/2015/2015/out
-/2015/2015/.idea
-/2015/2015/java/.idea
-/2015/.vs
+
+Debug/
+Release/
+x64/
+x86/
+
+
+# Java / Maven
+*.class
+
+target/
+java/target/
+
+dependency-reduced-pom.xml
+java/dependency-reduced-pom.xml
+
+
+# =========================
+# IDEs
+# =========================
+.idea/
+*.iml
+*.iws
+out/
+*.sln
+*.vcxproj
+
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
